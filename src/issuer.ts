@@ -168,7 +168,7 @@ const MetadataSchema = z
 			.enum(["plain", "S256"])
 			.array()
 			.optional(),
-		subject_types_supported: z.enum(["public"]).array().optional(),
+		subject_types_supported: z.enum(["public", "pairwise"]).array().optional(),
 		id_token_signing_alg_values_supported: z
 			.enum(["HS256", "RS256", "PS256"])
 			.array()
@@ -192,6 +192,13 @@ const MetadataSchema = z
 				"picture",
 				"sub",
 				"locale",
+				"cloud_instance_name",
+				"cloud_instance_host_name",
+				"cloud_graph_host_name",
+				"msgraph_host",
+				"acr",
+				"amr",
+				"nonce"
 			])
 			.array()
 			.optional(),
