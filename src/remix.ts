@@ -115,7 +115,7 @@ export class OIDCStrategy<User> extends Strategy<
 			//try to harcode these incorrectly types or missing values
 			tokens = {
 				...tokens,
-				expires_in: Number(tokens.expires_in),
+				expires_in: Number(tokens.expires_in as any),
 				ext_expires_in: Number(tokens.ext_expires_in),
 				scope: "openid", //why doesn't this follow through from authorisation params?
 			};
