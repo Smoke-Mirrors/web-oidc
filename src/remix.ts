@@ -115,10 +115,10 @@ export class OIDCStrategy<User> extends Strategy<
 			//try to harcode these incorrectly types or missing values
 			tokens = {
 				...tokens,
-				expires_in: Number(tokens.expires_in as any),
+				expires_in: Number(tokens.expires_in),
 				ext_expires_in: Number(tokens.ext_expires_in),
 				scope: "openid", //why doesn't this follow through from authorisation params?
-			};
+			} as any;
 			let profile = await client.userinfo(tokens.access_token);
 			// console.log(
 			// 	request,
