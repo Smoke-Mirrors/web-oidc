@@ -3,10 +3,10 @@ import { decodeJwt } from "jose";
 
 export class TokenSet {
 	public access_token!: string;
-	public expires_in!: number;
+	public expires_in!: string;
 	public id_token: string | undefined;
 	public refresh_token: string | undefined;
-	public scope!: string;
+	public scope!: string | undefined;
 	public token_type!: string;
 	[key: string]: TokenSetValue[keyof TokenSetValue];
 
@@ -56,9 +56,9 @@ export class TokenSet {
 export const TokenSetValueSchema = z
 	.object({
 		access_token: z.string(),
-		expires_in: z.number().optional().default(0),
+		expires_in: z.string().optional().default(0),
 		id_token: z.string().optional(),
-		scope: z.string(),
+		scope: z.string().optional(),
 		token_type: z
 			.enum(["Bearer", "bearer"])
 			.transform((value) => {
