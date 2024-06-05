@@ -112,9 +112,22 @@ export class OIDCStrategy<User> extends Strategy<
 				code_verifier,
 				response_type: "code",
 			});
-
+			//try to harcode these incorrectly types or missing values
+			tokens = {
+				...tokens,
+				expires_in: Number(tokens.expires_in),
+				ext_expires_in: Number(tokens.ext_expires_in),
+				scope: "openid", //why doesn't this follow through from authorisation params?
+			};
 			let profile = await client.userinfo(tokens.access_token);
-
+			// console.log(
+			// 	request,
+			// 	profile,
+			// 	tokens,
+			// 	options.context, //empty?
+			// 	this.issuer,
+			// 	client, //empty?
+			// );
 			let user = await this.verify({
 				request,
 				profile,
