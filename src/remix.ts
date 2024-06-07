@@ -120,9 +120,6 @@ export class OIDCStrategy<User> extends Strategy<
 				scope: "openid", //why doesn't this follow through from authorisation params?
 			} as any;
 			let profile = await client.userinfo(tokens.access_token);
-			profile.email = "anything"; //is email simply not returned due to non includsion in scope?
-			profile.email_verified = true;
-			profile.preferred_username = "toners"; //may not be strictly required but it returns it as well as a profile pic
 			// console.log(
 			// 	request,
 			// 	profile,
