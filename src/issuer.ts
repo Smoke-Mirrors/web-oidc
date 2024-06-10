@@ -160,6 +160,7 @@ const MetadataSchema = z
 				"code id_token",
 				"token id_token",
 				"code token id_token",
+				"id_token token",
 				"none",
 			])
 			.array()
@@ -198,7 +199,12 @@ const MetadataSchema = z
 				"msgraph_host",
 				"acr",
 				"amr",
-				"nonce"
+				"nonce",
+				"preferred_username",
+				"tid",
+				"ver",
+				"at_hash",
+				"c_hash",
 			])
 			.array()
 			.optional(),
